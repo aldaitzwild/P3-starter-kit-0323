@@ -1,7 +1,28 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Home{% endblock %}
-
+{% block title %}Home
+{% endblock %}
 {% block body %}
-<h1 class="text-center">Hello</h1>
+	<h1 class="text-center">Your To-Do Lists</h1>
+	<div class="container mt-3">
+		<div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center g-2 ">
+			{% for todoList in todoLists %}
+				<div class="card border border-secondary border-4 bg-primary shadow-lg text-white w-25 mx-1">
+					<a href="{{ path('todo_list_show', { id: todoList.id }) }}">
+						<h3 class="text-white">{{ todoList.title }}</h3>
+					</a>
+					<hr class="border border-secondary border-1 opacity-100"/>
+					<ul>
+						<li>task 1</li>
+						<li>task 1</li>
+						<li>task 1</li>
+						<li>task 1</li>
+					</ul>
+					<hr class="border border-secondary border-1 opacity-100"/>
+					<div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+						<div class="progress-bar" style="width: 25%">25%</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}
