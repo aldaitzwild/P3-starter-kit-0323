@@ -1,12 +1,32 @@
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
+import "./styles/app.scss";
 
-// any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.scss';
+import "./bootstrap";
+require("bootstrap");
 
-// start the Stimulus application
-import './bootstrap';
+// Message Flash
+
+const sidebar = document.getElementById("sidebar");
+const TopNavbar = document.getElementById("topNavbar");
+
+function updateSidebarClasses() {
+  if (window.innerWidth < 768) {
+    sidebar.classList.remove("collapse", "collapse-horizontal", "show");
+    sidebar.classList.add("offcanvas", "offcanvas-end", "w-50");
+    topNavbar.style.display = "block";
+  } else {
+    sidebar.classList.remove("offcanvas", "offcanvas-end", "w-50");
+    sidebar.classList.add("collapse", "collapse-horizontal", "show");
+    topNavbar.style.display = "none";
+  }
+}
+
+updateSidebarClasses();
+
+window.addEventListener("resize", updateSidebarClasses);
+
+setTimeout(function () {
+  var flashMessage = document.querySelector("div.alert");
+  if (flashMessage) {
+    flashMessage.remove();
+  }
+}, 5000);
