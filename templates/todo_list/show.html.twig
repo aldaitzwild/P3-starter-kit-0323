@@ -4,37 +4,54 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container ">
-		<div class="d-flex justify-content-between">
+	<div class="d-flex justify-content-between mt-3">
+		<div>
 			<h1 class="ms-5 text-white">{{ todo_list.title }}</h1>
-			<a href="{{ path('task_new') }}" class="btn btn-secondary text-white">
-				<h3>new task</h3>
+		</div>
+		<div class="d-flex ">
+			<a href="{{ path('todo_list_edit', {'id': todo_list.id}) }}" class="btn btn-secondary text-white d-flex align-items-center mx-3">
+				<i class="bi bi-pencil-square fs-3"></i>
 			</a>
+			{{ include('todo_list/_delete_form.html.twig') }}
 		</div>
 	</div>
+
 	<hr class="border border-white border-1 opacity-100 mx-4"/>
+
+	<div class="d-flex justify-content-center">
+		<a href="{{ path('task_new') }}" class="btn btn-secondary text-white me-5">
+			<h3>new task</h3>
+		</a>
+	</div>
+
 	<form name="task" method="post" enctype="multipart/form-data" class="mx-4">
-		<label for="task" class="text-white">Add a new task</label>
-		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+		<label for="content" class="text-white">Add a new task</label>
 		<div class="d-block text-center d-md-flex">
-			<textarea class="form-control"></textarea>
-			<button type="submit" class="btn btn-secondary text-white mt-1">
-				Envoyer
+			<textarea class="form-control" name="content"></textarea>
+			<button type="submit" class="btn btn-secondary text-white">
+				<h3>Submit</h3>
 			</button>
 		</div>
 	</form>
+
 	<div class="mt-4 mx-5">
 		{% for task in todo_list.tasks %}
-			<div class="card border border-secondary border-4 bg-primary shadow-lg text-white w-25 my-2">
-				<p>{{task.content}}</p>
+			<div class="d-flex">
+				<form name="task" method="post" enctype="multipart/form-data" class="mx-4">
+					{% if not task.completed %}
+						<button type="submit" name="completed" value="{{task.id}}" class="btn btn-secondary text-white rounded-circle">
+							<i class="bi bi-check-lg fs-3"></i>
+						</button>
+					{% else %}
+						<button type="submit" name="unCompleted" value="{{task.id}}" class="btn btn-success text-white rounded-circle">
+							<i class="bi bi-check-lg fs-3"></i>
+						</button>
+					{% endif %}
+				</form>
+				<div class="card border border-secondary border-4 bg-primary shadow-lg text-white w-25 my-2">
+					<p>{{task.content}}</p>
+				</div>
 			</div>
 		{% endfor %}
 	</div>
-
-	<a href="{{ path('todo_list_index') }}">back to list</a>
-
-
-	<a href="{{ path('todo_list_edit', {'id': todo_list.id}) }}">edit</a>
-
-	{{ include('todo_list/_delete_form.html.twig') }}
 {% endblock %}

@@ -14,7 +14,7 @@ class HomeController extends AbstractController
     {
         $todoLists = $todoListRepository->findAll();
         return $this->render('home/index.html.twig', [
-            "todoLists" => $todoLists,
+            "todo_lists" => $todoLists,
         ]);
     }
 }

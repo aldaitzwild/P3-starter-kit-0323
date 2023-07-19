@@ -5,15 +5,15 @@
 	<h1 class="text-center">Your To-Do Lists</h1>
 	<div class="container mt-3">
 		<div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center g-2 ">
-			{% for todoList in todoLists %}
+			{% for todo_list in todo_lists %}
 				<div class="card border border-secondary border-4 bg-primary shadow-lg text-white w-25 mx-1 p-0">
-					<a href="{{ path('todo_list_show', { id: todoList.id }) }}">
-						<h3 class="text-white text-center mt-1">{{ todoList.title }}</h3>
+					<a href="{{ path('todo_list_show', { id: todo_list.id }) }}">
+						<h3 class="text-white text-center mt-1">{{ todo_list.title }}</h3>
 					</a>
 					<hr class="border border-secondary border-1 opacity-100"/>
 					<ul>
-						{% if todoList.tasks is not empty %}
-							{% for task in todoList.tasks %}
+						{% if todo_list.tasks is not empty %}
+							{% for task in todo_list.tasks %}
 								<li>{{task.content}}</li>
 							{% endfor %}
 						{% else %}

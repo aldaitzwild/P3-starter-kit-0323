@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Task;
 use App\Entity\TodoList;
 use App\Form\TodoListType;
+use App\Repository\TaskRepository;
 use App\Repository\TodoListRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -42,9 +44,28 @@ class TodoListController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'show', methods: ['GET'])]
-    public function show(TodoList $todoList): Response
+    #[Route('/{id}', name: 'show')]
+    public function show(TodoList $todoList, Request $request, TaskRepository $taskRepository): Response
     {
+        $taskContent = $request->get('content');
+        if (!empty($taskContent)) {
+            $task = new Task();
+            $task->setTodoList($todoList);
+            $task->setContent($taskContent);
+            $task->setCompleted(false);
+
+            $taskRepository->save($task, true);
+            $this->addFlash('success', "New task added");
+        }
+
+        $taskCompleted = $request->get('completed');
+        if (!empty($taskCompleted)) {
+            $task = $taskRepository->find($taskCompleted);
+            $task->setCompleted(true);
+
+            $taskRepository->save($task, true);
+        }
+
         return $this->render('todo_list/show.html.twig', [
             'todo_list' => $todoList,
         ]);
@@ -71,7 +92,7 @@ class TodoListController extends AbstractController
     #[Route('/{id}', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, TodoList $todoList, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$todoList->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $todoList->getId(), $request->request->get('_token'))) {
             $entityManager->remove($todoList);
             $entityManager->flush();
         }
