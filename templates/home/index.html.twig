@@ -6,16 +6,19 @@
 	<div class="container mt-3">
 		<div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center g-2 ">
 			{% for todoList in todoLists %}
-				<div class="card border border-secondary border-4 bg-primary shadow-lg text-white w-25 mx-1">
+				<div class="card border border-secondary border-4 bg-primary shadow-lg text-white w-25 mx-1 p-0">
 					<a href="{{ path('todo_list_show', { id: todoList.id }) }}">
-						<h3 class="text-white">{{ todoList.title }}</h3>
+						<h3 class="text-white text-center mt-1">{{ todoList.title }}</h3>
 					</a>
 					<hr class="border border-secondary border-1 opacity-100"/>
 					<ul>
-						<li>task 1</li>
-						<li>task 1</li>
-						<li>task 1</li>
-						<li>task 1</li>
+						{% if todoList.tasks is not empty %}
+							{% for task in todoList.tasks %}
+								<li>{{task.content}}</li>
+							{% endfor %}
+						{% else %}
+							<li>No task</li>
+						{% endif %}
 					</ul>
 					<hr class="border border-secondary border-1 opacity-100"/>
 					<div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">

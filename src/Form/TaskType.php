@@ -3,7 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Task;
+use App\Entity\TodoList;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,8 +16,14 @@ class TaskType extends AbstractType
     {
         $builder
             ->add('content')
-            ->add('completed')
-            ->add('TodoList')
+            ->add('completed', CheckboxType::class, [
+                'label' => 'Completed',
+                'required' => 'false',
+            ])
+            ->add('TodoList', EntityType::class, [
+                'class' => TodoList::class,
+                'choice_label' => 'title'
+            ])
         ;
     }
 

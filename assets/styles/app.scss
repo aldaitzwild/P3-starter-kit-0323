@@ -1,21 +1,29 @@
-$primary: (#0F044C);
-$secondary: (#787A91);
-$info: (#141E61);
-$white: (#EEEEEE);
+$primary: (#0f044c);
+$secondary: (#787a91);
+$info: (#141e61);
+$white: (#eeeeee);
 
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=News+Cycle&display=swap'); //font-family: 'News Cycle', sans-serif;
-@import url('https://fonts.googleapis.com/css2?family=Imprima&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=News+Cycle&display=swap"); //font-family: 'News Cycle', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Imprima&display=swap");
 
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap-icons/font/bootstrap-icons";
 
-h1, h2, h3 {
-    font-family: 'Oswald', sans-serif;
+body {
+    background-color: $info;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Oswald", sans-serif;
+    color: $white;
 }
 
 p {
-    font-family: 'Imprima', sans-serif;
+    font-family: "Imprima", sans-serif;
+    color: $white;
 }
 
 // body {

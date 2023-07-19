@@ -33,7 +33,7 @@ class TodoListController extends AbstractController
             $entityManager->persist($todoList);
             $entityManager->flush();
 
-            return $this->redirectToRoute('todo_list_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('todo_list/new.html.twig', [
@@ -76,6 +76,6 @@ class TodoListController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('todo_list_sindex', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
     }
 }
