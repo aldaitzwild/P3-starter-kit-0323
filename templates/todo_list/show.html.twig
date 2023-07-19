@@ -19,18 +19,14 @@
 	<hr class="border border-white border-1 opacity-100 mx-4"/>
 
 	<div class="d-flex justify-content-center">
-		<a href="{{ path('task_new') }}" class="btn btn-secondary text-white me-5">
-			<p class="fs-4">new task</p>
-		</a>
+		<a href="" class="btn btn-secondary shadow-lg text-white fs-3 fw-semibold">New Task</a>
 	</div>
 
 	<form name="task" method="post" enctype="multipart/form-data" class="mx-4">
 		<label for="content" class="text-white">Add a new task</label>
 		<div class="d-block text-center d-md-flex">
 			<textarea class="form-control" name="content"></textarea>
-			<button type="submit" class="btn btn-secondary text-white">
-				<h3>Submit</h3>
-			</button>
+			<button type="submit" class="btn btn-secondary shadow-lg text-white fs-3 fw-semibold">Submit</button>
 		</div>
 	</form>
 
@@ -48,9 +44,10 @@
 						</button>
 					{% endif %}
 				</form>
-				<div class="card border border-secondary border-4 bg-primary shadow-lg text-white w-25 my-2">
+				<div class="card border border-secondary border-4 bg-primary shadow-lg text-white w-75 my-2">
 					<p>{{task.content}}</p>
 				</div>
+				{{ include('todo_list/_delete_form.html.twig') }}
 			</div>
 		{% endfor %}
 	</div>

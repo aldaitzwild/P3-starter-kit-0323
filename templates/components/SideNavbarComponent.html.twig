@@ -1,39 +1,35 @@
 <div{{attributes}}>
-	<div id="sidebar" class="bg-primary show shadow-lg sticky-md-top">
+	<div id="sidebar" class="bg-primary show shadow-lg">
 		<div class="list-group text-start vh-100">
-			<ul class="list-unstyled text-white text-center text-md-start sh-100 my-0">
-				<div class="text-center my-1">
-					<button type="button" class="btn text-reset d-md-none" data-bs-dismiss="offcanvas" aria-label="Close">
-						<i class="bi bi-x-circle-fill fs-4 text-white"></i>
-					</button>
+			<ul class="list-unstyled text-white text-center my-1">
+				<button type="button" class="btn text-reset d-md-none" data-bs-dismiss="offcanvas" aria-label="Close">
+					<i class="bi bi-x-circle-fill fs-4 text-white"></i>
+				</button>
 
-					<li class="nav-item">
-						<a href="" class="nav-link">
-							<h1 class="text-white mt-2">Task Central</h1>
-						</a>
-					</li>
-					<hr class="border border-white opacity-100">
+				<li class="nav-item">
+					<a href="" class="nav-link">
+						<h1 class="text-white mt-2">Task Central</h1>
+					</a>
+				</li>
+				<hr class="border border-white opacity-100">
 
-					<li class="nav-item">
-						<a href="{{ path('todo_list_new')}}" class="btn btn-secondary shadow-lg">
-							<h3 class="text-white mx-3">New TodoList</h3>
-						</a>
-					</li>
+				<li class="nav-item">
+					<a href="{{ path('todo_list_new')}}" class="btn btn-secondary shadow-lg text-white fs-3 fw-semibold">
+						New TodoList
+					</a>
+				</li>
 
-					<hr class="border border-white opacity-100">
+				<hr class="border border-white opacity-100">
 
-					<li class="nav-item">
-						<a href="{{ path('app_home')}}" class="nav-link">
-							<h3>Home</h3>
-						</a>
-					</li>
+				<li class="nav-item">
+					<a href="{{ path('app_home')}}" class="nav-link text-white fs-3 fw-semibold">Home</a>
+				</li>
 
-					<hr class="border border-white opacity-100">
-					<h3>To-Do Lists</h3>
-					{% for todo_list in computed.todoLists %}
-						<a href="{{ path('todo_list_show', { id: todo_list.id }) }}" class="nav-link">{{todo_list.title}}</a>
-					{% endfor %}
-				</div>
+				<hr class="border border-white opacity-100">
+				<h3>To-Do Lists</h3>
+				{% for todo_list in computed.todoLists %}
+					<a href="{{ path('todo_list_show', { id: todo_list.id }) }}" class="nav-link">{{todo_list.title}}</a>
+				{% endfor %}
 			</ul>
 		</div>
 	</div>

