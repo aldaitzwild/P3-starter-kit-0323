@@ -1,7 +1,7 @@
 <div{{attributes}}>
 	<div id="sidebar" class="bg-primary show shadow-lg sticky-md-top">
 		<div class="list-group text-start vh-100">
-			<ul class="list-unstyled text-white text-center text-md-start sticky-md-top vh-100 my-0">
+			<ul class="list-unstyled text-white text-center text-md-start sh-100 my-0">
 				<div class="text-center my-1">
 					<button type="button" class="btn text-reset d-md-none" data-bs-dismiss="offcanvas" aria-label="Close">
 						<i class="bi bi-x-circle-fill fs-4 text-white"></i>
@@ -29,10 +29,10 @@
 					</li>
 
 					<hr class="border border-white opacity-100">
-
-					<h3>High Priority</h3>
-					<h3>Medium Priority</h3>
-					<h3>Low Priority</h3>
+					<h3>To-Do Lists</h3>
+					{% for todo_list in computed.todoLists %}
+						<a href="{{ path('todo_list_show', { id: todo_list.id }) }}" class="nav-link">{{todo_list.title}}</a>
+					{% endfor %}
 				</div>
 			</ul>
 		</div>

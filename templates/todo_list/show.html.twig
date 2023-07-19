@@ -20,7 +20,7 @@
 
 	<div class="d-flex justify-content-center">
 		<a href="{{ path('task_new') }}" class="btn btn-secondary text-white me-5">
-			<h3>new task</h3>
+			<p class="fs-4">new task</p>
 		</a>
 	</div>
 
@@ -43,7 +43,7 @@
 							<i class="bi bi-check-lg fs-3"></i>
 						</button>
 					{% else %}
-						<button type="submit" name="unCompleted" value="{{task.id}}" class="btn btn-success text-white rounded-circle">
+						<button type="submit" name="unCompleted" value="{{task.id}}" class=" btn btn-success text-white rounded-circle">
 							<i class="bi bi-check-lg fs-3"></i>
 						</button>
 					{% endif %}

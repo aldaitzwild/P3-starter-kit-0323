@@ -66,6 +66,14 @@ class TodoListController extends AbstractController
             $taskRepository->save($task, true);
         }
 
+        $taskUnCompleted = $request->get('unCompleted');
+        if (!empty($taskUnCompleted)) {
+            $task = $taskRepository->find($taskUnCompleted);
+            $task->setCompleted(false);
+
+            $taskRepository->save($task, true);
+        }
+
         return $this->render('todo_list/show.html.twig', [
             'todo_list' => $todoList,
         ]);
