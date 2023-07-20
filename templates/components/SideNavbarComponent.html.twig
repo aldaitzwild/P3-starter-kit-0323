@@ -29,11 +29,12 @@
 				</li>
 
 				<hr class="border border-white opacity-100">
-
-				<button id="displayTodo" class="btn fs-3 fw-semibold m-0 border border-primary text-white">
-					<i class="bi bi-caret-down"></i>
-					To do list
-				</button>
+				<li>
+					<a id="displayTodo" class="btn fs-3 fw-semibold m-0 border border-primary text-white">
+						<i class="bi bi-caret-down"></i>
+						To do list
+					</a>
+				</li>
 
 				<ul id="todoSidebar" class="p-0 list-unstyled" style="display: none;">
 					{% for todo_list in computed.todoLists %}

@@ -44,7 +44,7 @@ class TodoListController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'show', methods: ['GET'])]
+    #[Route('/{id}', name: 'show')]
     public function show(TodoList $todoList, Request $request, TaskRepository $taskRepository): Response
     {
         $taskContent = $request->get('content');
@@ -97,7 +97,7 @@ class TodoListController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, TodoList $todoList, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $todoList->getId(), $request->request->get('_token'))) {
