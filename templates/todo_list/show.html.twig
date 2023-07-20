@@ -9,7 +9,7 @@
 			<h1 class="ms-5 text-white">{{ todo_list.title }}</h1>
 		</div>
 		<div class="d-flex me-5">
-			<a href="{{ path('todo_list_edit', {'id': todo_list.id}) }}" class="btn btn-secondary rounded-4 text-white d-flex align-items-center mx-3">
+			<a href="{{ path('todo_list_edit', {'id': todo_list.id}) }}" class="btn btn-shadow btn-secondary rounded-4 text-white d-flex align-items-center mx-3">
 				<i class="bi bi-pencil-square fs-3"></i>
 			</a>
 			{{ include('todo_list/_delete_form.html.twig') }}
@@ -18,11 +18,11 @@
 
 	<hr class="border border-white border-1 opacity-100 mx-4"/>
 	<div class="d-flex mx-4 w-100">
-		<button id="newTaskBtn" class="btn btn-secondary shadow-lg text-white fs-3 ms-5 fw-semibold rounded-4">Add Task</button>
+		<button id="newTaskBtn" class="btn btn-shadow btn-secondary text-white fs-3 ms-5 me-2 fw-semibold rounded-4">Add Task</button>
 		<form id="taskForm" name="task" method="post" enctype="multipart/form-data" class="w-75" style="display: none;">
 			<div class="d-block text-center d-md-flex">
-				<textarea class="form-control" name="content"></textarea>
-				<button type="submit" class="btn btn-secondary shadow-lg text-white fs-3 fw-semibold">Submit</button>
+				<textarea class="form-control card-shadow" name="content"></textarea>
+				<button type="submit" class="btn btn-shadow btn-secondary text-white fs-3 ms-2 fw-semibold">Submit</button>
 			</div>
 		</form>
 	</div>
@@ -42,7 +42,7 @@
 					{% endif %}
 				</form>
 
-				<div class="card border border-secondary rounded-4 border-4 bg-primary shadow-lg text-white my-2">
+				<div class="card card-shadow border border-secondary rounded-4 border-4 bg-primary text-white my-2">
 					<div class="d-flex">
 						<p class="mx-3 me-5 my-3 fs-5">{{task.content}}</p>
 						{{ include('task/_delete_form.html.twig') }}

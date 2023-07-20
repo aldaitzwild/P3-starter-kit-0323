@@ -9,9 +9,9 @@
 		<div class="row d-flex justify-content-center g-2 ">
 			{% for todo_list in todo_lists %}
 				<div class="col-9 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
-					<div class="card border border-secondary border-4 bg-primary shadow-lg text-white rounded-5 mx-3 mt-3 p-0 w-100">
+					<div class="card border border-secondary border-4 bg-primary card-shadow text-white rounded-5 mx-3 mt-3 p-0 w-100">
 						<a href="{{ path('todo_list_show', { id: todo_list.id }) }}">
-							<h3 class="text-white text-center my-3">{{ todo_list.title|u.truncate(18, '...', true) }}</h3>
+							<h4 class="text-white mx-2 my-2">{{ todo_list.title|u.truncate(18, '...', true) }}</h4>
 						</a>
 
 						<hr class="border border-secondary border-1 opacity-100 my-0"/>
@@ -28,8 +28,8 @@
 
 						<hr class="border border-secondary border-1 opacity-100 my-0"/>
 
-						<div class="progress mx-2 my-3 border border-secondary border-4 rounded-4" role="progressbar" aria-label="Example label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-							<div class="progress-bar bg-success overflow-visible fs-6 fw-bold" style="width: 25%">
+						<div class="progress mx-2 my-2 border border-secondary border-2 rounded-4" role="progressbar" aria-label="Example label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+							<div class="progress-bar bg-success rounded-4 overflow-visible fs-6 fw-bold" style="width: 25%">
 								25%</div>
 						</div>
 					</div>
