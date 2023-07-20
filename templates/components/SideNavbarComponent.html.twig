@@ -1,5 +1,13 @@
 <div{{attributes}}>
-	<div id="sidebar" class="bg-primary show shadow-lg">
+	{% block stylesheets %}
+		{{ encore_entry_link_tags('app') }}
+	{% endblock %}
+
+	{% block javascripts %}
+		{{ encore_entry_script_tags('app') }}
+	{% endblock %}
+
+	<div id="sidebar" class="bg-primary show shadow-lg h-100">
 		<div class="list-group text-start vh-100">
 			<ul class="list-unstyled text-white text-center my-1">
 				<button type="button" class="btn text-reset d-md-none" data-bs-dismiss="offcanvas" aria-label="Close">
@@ -22,15 +30,25 @@
 				<hr class="border border-white opacity-100">
 
 				<li class="nav-item">
-					<a href="{{ path('app_home')}}" class="nav-link text-white fs-3 fw-semibold">Home</a>
+					<a href="{{ path('app_home')}}" class="nav-link text-white fs-3 fw-semibold">
+						<i class="bi bi-house"></i>
+						Home</a>
 				</li>
 
 				<hr class="border border-white opacity-100">
-				<ul class="p-0 fs-3 fw-semibold">To-Do Lists</ul>
-				{% for todo_list in computed.todoLists %}
-					<a href="{{ path('todo_list_show', { id: todo_list.id }) }}" class="nav-link">{{todo_list.title|u.truncate(20, '...', true)}}</a>
-				{% endfor %}
-			</ul>
+
+				<button id="displayTodo" class="btn fs-3 fw-semibold m-0 border border-primary text-white">
+					<i class="bi bi-caret-down"></i>
+					To do list
+				</button>
+
+				<ul id="todoSidebar" class="p-0" style="display: none;">
+					{% for todo_list in computed.todoLists %}
+						<li>
+							<a href="{{ path('todo_list_show', { id: todo_list.id }) }}" class="nav-link">{{ todo_list.title|u.truncate(20, '...', true) }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
 		</div>
 	</div>
-</div>

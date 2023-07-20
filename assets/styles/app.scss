@@ -11,19 +11,21 @@ $white: (#eeeeee);
 @import "~bootstrap/scss/bootstrap";
 @import "~bootstrap-icons/font/bootstrap-icons";
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color: $info;
+    font-family: "Imprima", sans-serif;
+    color: $white;
 }
 
 h1,
 h2,
 h3 {
     font-family: "Oswald", sans-serif;
-    color: $white;
-}
-
-p {
-    font-family: "Imprima", sans-serif;
     color: $white;
 }
 

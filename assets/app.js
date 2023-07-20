@@ -43,3 +43,14 @@ newTaskBtn.addEventListener("click", function () {
     newTaskBtn.innerHTML = "New Task";
   }
 });
+
+const displayTodo = document.getElementById("displayTodo");
+const todoSidebar = document.getElementById("todoSidebar");
+
+displayTodo.addEventListener("click", function () {
+  if (todoSidebar.style.display === "none") {
+    todoSidebar.style.display = "block";
+  } else {
+    todoSidebar.style.display = "none";
+  }
+});
