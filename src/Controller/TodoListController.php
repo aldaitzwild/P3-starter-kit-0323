@@ -103,8 +103,8 @@ class TodoListController extends AbstractController
         if ($this->isCsrfTokenValid('delete' . $todoList->getId(), $request->request->get('_token'))) {
             $entityManager->remove($todoList);
             $entityManager->flush();
+            $this->addFlash('success', 'To-do List deleted');
         }
-
         return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
     }
 }

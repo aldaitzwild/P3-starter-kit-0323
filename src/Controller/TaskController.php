@@ -20,6 +20,7 @@ class TaskController extends AbstractController
         if ($this->isCsrfTokenValid('delete' . $task->getId(), $request->request->get('_token'))) {
             $entityManager->remove($task);
             $entityManager->flush();
+            $this->addFlash('success', 'Task deleted');
         }
 
         return $this->redirectToRoute('todo_list_show', ['id' => $request->get('todo_list')], Response::HTTP_SEE_OTHER);
