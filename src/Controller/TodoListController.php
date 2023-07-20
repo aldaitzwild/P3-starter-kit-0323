@@ -16,14 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/todoList', name: 'todo_list_')]
 class TodoListController extends AbstractController
 {
-    #[Route('/', name: 'index', methods: ['GET'])]
-    public function index(TodoListRepository $todoListRepository): Response
-    {
-        return $this->render('todo_list/index.html.twig', [
-            'todo_lists' => $todoListRepository->findAll(),
-        ]);
-    }
-
     #[Route('/new', name: 'new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

@@ -12,9 +12,13 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(TodoListRepository $todoListRepository): Response
     {
-        $todoLists = $todoListRepository->findAll();
+        $todoListsHigh = $todoListRepository->findBy(['priority' => 'High']);
+        $todoListsMedium = $todoListRepository->findBy(['priority' => 'Medium']);
+        $todoListsLow = $todoListRepository->findBy(['priority' => 'Low']);
         return $this->render('home/index.html.twig', [
-            "todo_lists" => $todoLists,
+            "todoListsHigh" => $todoListsHigh,
+            "todoListsMedium" => $todoListsMedium,
+            "todoListsLow" => $todoListsLow,
         ]);
     }
 }

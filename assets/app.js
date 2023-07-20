@@ -31,17 +31,47 @@ setTimeout(function () {
   }
 }, 5000);
 
-const displayTodo = document.getElementById("displayTodo");
-const todoSidebar = document.getElementById("todoSidebar");
+const displayTodoHigh = document.getElementById("displayTodoHigh");
+const todoHighSidebar = document.getElementById("todoHighSidebar");
 
-displayTodo.addEventListener("click", function () {
-  if (todoSidebar.style.display === "none") {
-    todoSidebar.style.display = "block";
-    displayTodo.innerHTML =
+displayTodoHigh.addEventListener("click", function () {
+  if (todoHighSidebar.style.display === "none") {
+    todoHighSidebar.style.display = "block";
+    displayTodoHigh.innerHTML =
       '<i class="bi bi-caret-up-fill fs-3"></i> To-Do List';
   } else {
-    todoSidebar.style.display = "none";
-    displayTodo.innerHTML =
+    todoHighSidebar.style.display = "none";
+    displayTodoHigh.innerHTML =
+      '<i class="bi bi-caret-down-fill fs-3"></i> To-Do List';
+  }
+});
+
+const displayTodoMedium = document.getElementById("displayTodoMedium");
+const todoMediumSidebar = document.getElementById("todoMediumSidebar");
+
+displayTodoMedium.addEventListener("click", function () {
+  if (todoMediumSidebar.style.display === "none") {
+    todoMediumSidebar.style.display = "block";
+    displayTodoMedium.innerHTML =
+      '<i class="bi bi-caret-up-fill fs-3"></i> To-Do List';
+  } else {
+    todoMediumSidebar.style.display = "none";
+    displayTodoMedium.innerHTML =
+      '<i class="bi bi-caret-down-fill fs-3"></i> To-Do List';
+  }
+});
+
+const displayTodoLow = document.getElementById("displayTodoLow");
+const todoLowSidebar = document.getElementById("todoLowSidebar");
+
+displayTodoLow.addEventListener("click", function () {
+  if (todoLowSidebar.style.display === "none") {
+    todoLowSidebar.style.display = "block";
+    displayTodoLow.innerHTML =
+      '<i class="bi bi-caret-up-fill fs-3"></i> To-Do List';
+  } else {
+    todoLowSidebar.style.display = "none";
+    displayTodoLow.innerHTML =
       '<i class="bi bi-caret-down-fill fs-3"></i> To-Do List';
   }
 });

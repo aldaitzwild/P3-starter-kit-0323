@@ -12,8 +12,18 @@ final class SideNavbarComponent
         public TodoListRepository $todoListRepository
     ) {
     }
-    public function getTodoLists(): array
+    public function getTodoListsHigh(): array
     {
-        return $this->todoListRepository->findAll();
+        return $this->todoListRepository->findBy(['priority' => 'High']);
+    }
+
+    public function getTodoListsMedium(): array
+    {
+        return $this->todoListRepository->findBy(['priority' => 'Medium']);
+    }
+
+    public function getTodoListsLow(): array
+    {
+        return $this->todoListRepository->findBy(['priority' => 'Low']);
     }
 }
