@@ -1,5 +1,4 @@
 <div{{attributes}}>
-
 	<div id="sidebar" class="bg-primary h-100">
 		<div class="list-group text-start vh-100">
 			<ul class="list-unstyled text-white text-center my-1">
@@ -14,35 +13,36 @@
 				</li>
 				<hr class="border border-white opacity-100">
 
-				<li class="nav-item">
-					<a href="{{ path('todo_list_new')}}" class="btn btn-shadow btn-secondary rounded-4 text-white fs-3 fw-semibold">
-						New TodoList
-					</a>
-				</li>
-
-				<hr class="border border-white opacity-100">
-
-				<li class="nav-item">
-					<a href="{{ path('app_home')}}" class="nav-link text-white fs-3 fw-semibold">
-						<i class="bi bi-house-fill"></i>
-						Home</a>
-				</li>
-
-				<hr class="border border-white opacity-100">
 				<li>
-					<a id="displayTodo" class="btn fs-3 fw-semibold m-0 border border-primary text-white">
-						<i class="bi bi-caret-down-fill"></i>
-						To do list
+					<a href="{{ path('todo_list_new')}}" class="btn btn-shadow btn-secondary rounded-4 text-white fs-3 fw-semibold">
+						New To-Do List
 					</a>
 				</li>
 
-				<ul id="todoSidebar" class="p-0 list-unstyled" style="display: none;">
-					{% for todo_list in computed.todoLists %}
-						<li>
-							<a href="{{ path('todo_list_show', { id: todo_list.id }) }}" class="nav-link">{{ todo_list.title|u.truncate(20, '...', true) }}</a>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
+				<hr class="border border-white opacity-100">
+
+				<div class="text-md-start">
+					<li class="nav-item ps-3 py-1">
+						<a href="{{ path('app_home')}}" class="nav-link text-white fs-3 fw-semibold">
+							<i class="bi bi-house-fill"></i>
+							Home</a>
+					</li>
+					<li class="nav-item ps-3 py-1">
+						<a id="displayTodo" class="nav-link fs-3 fw-semibold text-white">
+							<i class="bi bi-caret-down-fill fs-3"></i>
+							To-Do List
+						</a>
+					</li>
+					<ul id="todoSidebar" class=" ms-4 list-unstyled" style="display: none;">
+						{% for todo_list in computed.todoLists %}
+							<li class="nav-item pt-1">
+								<a href="{{ path('todo_list_show', { id: todo_list.id }) }}" class="nav-link fs-5">-
+									{{ todo_list.title|u.truncate(25, '...', true) }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</ul>
 		</div>
 	</div>
+</div>

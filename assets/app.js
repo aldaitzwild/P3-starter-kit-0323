@@ -12,11 +12,11 @@ function updateSidebarClasses() {
   if (window.innerWidth < 768) {
     sidebar.classList.remove("collapse", "collapse-horizontal", "show");
     sidebar.classList.add("offcanvas", "offcanvas-end", "w-50");
-    topNavbar.style.display = "block";
+    TopNavbar.style.display = "block";
   } else {
     sidebar.classList.remove("offcanvas", "offcanvas-end", "w-50");
     sidebar.classList.add("collapse", "collapse-horizontal", "show");
-    topNavbar.style.display = "none";
+    TopNavbar.style.display = "none";
   }
 }
 
@@ -31,6 +31,21 @@ setTimeout(function () {
   }
 }, 5000);
 
+const displayTodo = document.getElementById("displayTodo");
+const todoSidebar = document.getElementById("todoSidebar");
+
+displayTodo.addEventListener("click", function () {
+  if (todoSidebar.style.display === "none") {
+    todoSidebar.style.display = "block";
+    displayTodo.innerHTML =
+      '<i class="bi bi-caret-up-fill fs-3"></i> To-Do List';
+  } else {
+    todoSidebar.style.display = "none";
+    displayTodo.innerHTML =
+      '<i class="bi bi-caret-down-fill fs-3"></i> To-Do List';
+  }
+});
+
 const newTaskBtn = document.getElementById("newTaskBtn");
 const taskForm = document.getElementById("taskForm");
 
@@ -41,16 +56,5 @@ newTaskBtn.addEventListener("click", function () {
   } else {
     taskForm.style.display = "none";
     newTaskBtn.innerHTML = "New Task";
-  }
-});
-
-const displayTodo = document.getElementById("displayTodo");
-const todoSidebar = document.getElementById("todoSidebar");
-
-displayTodo.addEventListener("click", function () {
-  if (todoSidebar.style.display === "none") {
-    todoSidebar.style.display = "block";
-  } else {
-    todoSidebar.style.display = "none";
   }
 });
