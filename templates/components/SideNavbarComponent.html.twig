@@ -14,7 +14,7 @@
 				<hr class="border border-white opacity-100">
 
 				<li class="nav-item">
-					<a href="{{ path('todo_list_new')}}" class="btn btn-secondary shadow-lg text-white fs-3 fw-semibold">
+					<a href="{{ path('todo_list_new')}}" class="btn btn-secondary rounded-4 shadow-lg text-white fs-3 fw-semibold">
 						New TodoList
 					</a>
 				</li>
@@ -26,9 +26,9 @@
 				</li>
 
 				<hr class="border border-white opacity-100">
-				<h3>To-Do Lists</h3>
+				<ul class="p-0 fs-3 fw-semibold">To-Do Lists</ul>
 				{% for todo_list in computed.todoLists %}
-					<a href="{{ path('todo_list_show', { id: todo_list.id }) }}" class="nav-link">{{todo_list.title}}</a>
+					<a href="{{ path('todo_list_show', { id: todo_list.id }) }}" class="nav-link">{{todo_list.title|u.truncate(20, '...', true)}}</a>
 				{% endfor %}
 			</ul>
 		</div>

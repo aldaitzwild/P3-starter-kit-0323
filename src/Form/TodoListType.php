@@ -15,8 +15,8 @@ class TodoListType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title',TextType::class, [
-                'label' => 'your new To-Do List',
+            ->add('title', TextType::class, [
+                'label' => 'Your new To-Do List',
                 'constraints' => [
                     new Assert\NotBlank(['message' => 'You need a title.']),
                     new Assert\Length([
@@ -34,8 +34,7 @@ class TodoListType extends AbstractType
                     'Medium Priority' => 'Medium',
                     'Low Priority' => 'Low',
                 ]
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

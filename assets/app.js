@@ -37,7 +37,9 @@ const taskForm = document.getElementById("taskForm");
 newTaskBtn.addEventListener("click", function () {
   if (taskForm.style.display === "none") {
     taskForm.style.display = "block";
+    newTaskBtn.innerHTML = '<i class="bi bi-eye-slash fs-3"></i>';
   } else {
     taskForm.style.display = "none";
+    newTaskBtn.innerHTML = "New Task";
   }
 });

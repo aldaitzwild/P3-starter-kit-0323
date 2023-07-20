@@ -100,6 +100,7 @@ class TodoListController extends AbstractController
     #[Route('/{id}', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, TodoList $todoList, EntityManagerInterface $entityManager): Response
     {
+        dd($request);
         if ($this->isCsrfTokenValid('delete' . $todoList->getId(), $request->request->get('_token'))) {
             $entityManager->remove($todoList);
             $entityManager->flush();
