@@ -20,6 +20,7 @@ body {
     background-color: $info;
     font-family: "Imprima", sans-serif;
     color: $white;
+    overflow-x: hidden;
 }
 
 h1,
@@ -29,9 +30,21 @@ h3 {
     color: $white;
 }
 
+// ---------- index card ----------- //
+
 .progress {
     height: 35px;
 }
+
+.card-link {
+    transition: all 0.2s ease-in-out;
+}
+
+.card-link:hover {
+    transform: scale(1.1);
+}
+
+// ---------- Shadows ----------- //
 
 .card-shadow,
 .btn-shadow {
@@ -40,4 +53,26 @@ h3 {
 
 .sidebar-shadow {
     box-shadow: 0px 4px 10px 5px black;
+}
+
+// ---------- btn completed ----------- //
+
+.btn-completed {
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-completed:hover {
+    background-color: $success;
+    border-color: $success;
+    transform: scale(1.1);
+}
+
+.btn-unCompleted {
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-unCompleted:hover {
+    background-color: $secondary;
+    border-color: $secondary;
+    transform: scale(1.1);
 }

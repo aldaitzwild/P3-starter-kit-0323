@@ -32,11 +32,11 @@
 			<div class="d-flex my-3">
 				<form name="status" method="post" enctype="multipart/form-data" class="mx-4 my-auto">
 					{% if not task.completed %}
-						<button type="submit" name="completed" value="{{task.id}}" class="btn btn-secondary text-white rounded-circle">
+						<button type="submit" name="completed" value="{{task.id}}" class="btn btn-completed btn-shadow btn-secondary text-white rounded-circle">
 							<i class="bi bi-check-lg fs-3"></i>
 						</button>
 					{% else %}
-						<button type="submit" name="unCompleted" value="{{task.id}}" class=" btn btn-success text-white rounded-circle">
+						<button type="submit" name="unCompleted" value="{{task.id}}" class="btn btn-unCompleted btn-shadow btn-success text-white rounded-circle">
 							<i class="bi bi-check-lg fs-3"></i>
 						</button>
 					{% endif %}
