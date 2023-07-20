@@ -21,18 +21,6 @@ class TodoListRepository extends ServiceEntityRepository
         parent::__construct($registry, TodoList::class);
     }
 
-    public function getTotalCompletedTask(int $todoId): int
-    {
-        return $this->createQueryBuilder('t')
-            ->select('COUNT(t)')
-            ->innerJoin('i.todolist', 'l')
-            ->where('l.id = :todoId')
-            ->andWhere('t.completed LIKE true')
-            ->setParameter('todoId', $todoId)
-            ->getQuery()
-            ->getResult();
-    }
-
     //    /**
     //     * @return TodoList[] Returns an array of TodoList objects
     //     */

@@ -66,8 +66,11 @@ class TodoListController extends AbstractController
             $taskRepository->save($task, true);
         }
 
+        $taskCompleted = $taskRepository->getTotalCompletedTask($todoList->getId());
+
         return $this->render('todo_list/show.html.twig', [
             'todo_list' => $todoList,
+            'taskCompleted' => $taskCompleted
         ]);
     }
 
