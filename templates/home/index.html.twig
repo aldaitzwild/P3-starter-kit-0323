@@ -3,26 +3,34 @@
 {% endblock %}
 {% block body %}
 	<h1 class="text-center">Your To-Do Lists</h1>
+	<hr class="border border-white border-1 opacity-100 mx-5"/>
+
 	<div class="container mt-3">
-		<div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center g-2 ">
+		<div class="row d-flex justify-content-center g-2 ">
 			{% for todo_list in todo_lists %}
-				<div class="card border border-secondary border-4 bg-primary shadow-lg text-white w-25 mx-1 p-0">
-					<a href="{{ path('todo_list_show', { id: todo_list.id }) }}">
-						<h3 class="text-white text-center mt-1">{{ todo_list.title }}</h3>
-					</a>
-					<hr class="border border-secondary border-1 opacity-100"/>
-					<ul>
-						{% if todo_list.tasks is not empty %}
-							{% for task in todo_list.tasks %}
-								<li>{{task.content}}</li>
-							{% endfor %}
-						{% else %}
-							<li>No task</li>
-						{% endif %}
-					</ul>
-					<hr class="border border-secondary border-1 opacity-100"/>
-					<div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-						<div class="progress-bar" style="width: 25%">25%</div>
+				<div class="col-3 d-flex justify-content-center">
+					<div class="card border border-secondary border-4 bg-primary shadow-lg text-white mx-3 mt-3 p-0 w-75">
+						<a href="{{ path('todo_list_show', { id: todo_list.id }) }}">
+							<h3 class="text-white text-center my-2">{{ todo_list.title|u.truncate(25, '...', true) }}</h3>
+						</a>
+
+						<hr class="border border-secondary border-1 opacity-100 my-0"/>
+
+						<ul class="my-2">
+							{% if todo_list.tasks is not empty %}
+								{% for task in todo_list.tasks|slice(0,5) %}
+									<li>{{task.content|u.truncate(20, '...', true)}}</li>
+								{% endfor %}
+							{% else %}
+								<li>No task</li>
+							{% endif %}
+						</ul>
+
+						<hr class="border border-secondary border-1 opacity-100 my-0"/>
+
+						<div class="progress mx-2 my-3" role="progressbar" aria-label="Example label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+							<div class="progress-bar bg-success overflow-visible fs-6 fw-bold" style="width: 25%">25%</div>
+						</div>
 					</div>
 				</div>
 			{% endfor %}

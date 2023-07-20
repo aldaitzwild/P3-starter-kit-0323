@@ -30,3 +30,14 @@ setTimeout(function () {
     flashMessage.remove();
   }
 }, 5000);
+
+const newTaskBtn = document.getElementById("newTaskBtn");
+const taskForm = document.getElementById("taskForm");
+
+newTaskBtn.addEventListener("click", function () {
+  if (taskForm.style.display === "none") {
+    taskForm.style.display = "block";
+  } else {
+    taskForm.style.display = "none";
+  }
+});

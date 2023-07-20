@@ -8,6 +8,7 @@
 		<div>
 			<h1 class="ms-5 text-white">{{ todo_list.title }}</h1>
 		</div>
+		<button id="newTaskBtn" class="btn btn-secondary shadow-lg text-white fs-3 fw-semibold">Add Task</button>
 		<div class="d-flex ">
 			<a href="{{ path('todo_list_edit', {'id': todo_list.id}) }}" class="btn btn-secondary text-white d-flex align-items-center mx-3">
 				<i class="bi bi-pencil-square fs-3"></i>
@@ -18,11 +19,7 @@
 
 	<hr class="border border-white border-1 opacity-100 mx-4"/>
 
-	<div class="d-flex justify-content-center">
-		<a href="" class="btn btn-secondary shadow-lg text-white fs-3 fw-semibold">New Task</a>
-	</div>
-
-	<form name="task" method="post" enctype="multipart/form-data" class="mx-4">
+	<form id="taskForm" name="task" method="post" enctype="multipart/form-data" class="mx-4" style="display: none;">
 		<label for="content" class="text-white">Add a new task</label>
 		<div class="d-block text-center d-md-flex">
 			<textarea class="form-control" name="content"></textarea>
@@ -32,8 +29,8 @@
 
 	<div class="mt-4 mx-5">
 		{% for task in todo_list.tasks %}
-			<div class="d-flex">
-				<form name="task" method="post" enctype="multipart/form-data" class="mx-4">
+			<div class="d-flex my-3">
+				<form name="status" method="post" enctype="multipart/form-data" class="mx-4 my-auto">
 					{% if not task.completed %}
 						<button type="submit" name="completed" value="{{task.id}}" class="btn btn-secondary text-white rounded-circle">
 							<i class="bi bi-check-lg fs-3"></i>
@@ -44,10 +41,13 @@
 						</button>
 					{% endif %}
 				</form>
-				<div class="card border border-secondary border-4 bg-primary shadow-lg text-white w-75 my-2">
-					<p>{{task.content}}</p>
+
+				<div class="card border border-secondary border-4 bg-primary shadow-lg text-white my-2">
+					<div class="d-flex">
+						<p class="mx-2 me-5 my-auto">{{task.content}}</p>
+						{{ include('task/_delete_form.html.twig') }}
+					</div>
 				</div>
-				{{ include('todo_list/_delete_form.html.twig') }}
 			</div>
 		{% endfor %}
 	</div>
