@@ -87,4 +87,9 @@ class TodoList
 
         return $this;
     }
+
+    public function getTotalTasks(): int
+    {
+        return $this->getTasks()->count();
+    }
 }

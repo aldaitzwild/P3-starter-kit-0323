@@ -44,7 +44,7 @@ class TodoListController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'show')]
+    #[Route('/{id}', name: 'show', methods: ['GET'])]
     public function show(TodoList $todoList, Request $request, TaskRepository $taskRepository): Response
     {
         $taskContent = $request->get('content');
