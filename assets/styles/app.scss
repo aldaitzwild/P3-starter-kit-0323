@@ -68,22 +68,24 @@ h3 {
 
 // ---------- btn completed ----------- //
 
-.btn-completed {
+.btn-task1 {
     transition: all 0.2s ease-in-out;
+    background-color: $success;
 }
 
-.btn-completed:hover {
-    background-color: $success;
-    border-color: $success;
+.btn-task1:hover {
+    background-color: $secondary;
+    border-color: $secondary;
     transform: scale(1.1);
 }
 
-.btn-unCompleted {
+.btn-task {
     transition: all 0.2s ease-in-out;
+    background-color: $secondary;
 }
 
-.btn-unCompleted:hover {
-    background-color: $secondary;
-    border-color: $secondary;
+.btn-task:hover {
+    background-color: $success;
+    border-color: $success;
     transform: scale(1.1);
 }

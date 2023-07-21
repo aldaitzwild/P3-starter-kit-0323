@@ -50,18 +50,11 @@ class TodoListController extends AbstractController
             $this->addFlash('success', "New task added");
         }
 
-        $taskCompleted = $request->get('completed');
-        if (!empty($taskCompleted)) {
-            $task = $taskRepository->find($taskCompleted);
-            $task->setCompleted(true);
-
-            $taskRepository->save($task, true);
-        }
-
-        $taskUnCompleted = $request->get('unCompleted');
-        if (!empty($taskUnCompleted)) {
-            $task = $taskRepository->find($taskUnCompleted);
-            $task->setCompleted(false);
+        $taskId = $request->get('taskStatus');
+        $status = $request->get('status');
+        if (!empty($taskId) && $status === false || true) {
+            $task = $taskRepository->find($taskId);
+            $task->setCompleted($status);
 
             $taskRepository->save($task, true);
         }

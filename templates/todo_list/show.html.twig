@@ -39,16 +39,15 @@
 	<div class="mt-4 mx-5">
 		{% for task in todo_list.tasks %}
 			<div class="d-flex my-3">
-				<form name="status" method="post" enctype="multipart/form-data" class="mx-4 my-auto">
+				<form name="setTaskStatus" method="post" enctype="multipart/form-data" class="mx-4 my-auto">
 					{% if not task.completed %}
-						<button type="submit" name="completed" value="{{task.id}}" class="btn btn-completed btn-shadow btn-secondary text-white rounded-circle">
-							<i class="bi bi-check-lg fs-3"></i>
-						</button>
+						<input type="number" name="status" value="1" hidden>
 					{% else %}
-						<button type="submit" name="unCompleted" value="{{task.id}}" class="btn btn-unCompleted btn-shadow btn-success text-white rounded-circle">
-							<i class="bi bi-check-lg fs-3"></i>
-						</button>
+						<input type="number" name="status" value="0" hidden>
 					{% endif %}
+					<button type="submit" name="taskStatus" value="{{task.id}}" class="btn btn-task{{task.completed}} btn-shadow text-white rounded-circle">
+						<i class="bi bi-check-lg fs-3"></i>
+					</button>
 				</form>
 
 				<div class="card card-shadow border border-secondary rounded-4 border-4 bg-primary text-white my-2">
