@@ -2,7 +2,7 @@
 	<div class="card border border-secondary border-4 bg-primary card-shadow text-white rounded-5 p-0 h-100">
 		<h4 class="text-white mx-3 my-2">{{ todo_list.title|u.truncate(18, '...', true) }}</h4>
 
-		<hr class="border border-secondary border-1 opacity-100 my-0"/>
+		<hr class="border border-secondary border-2 opacity-100 my-0"/>
 
 		<ul class="my-3 h-50 list-unstyled">
 			{% if todo_list.tasks is not empty %}
@@ -21,7 +21,7 @@
 			{% endif %}
 		</ul>
 
-		<hr class="border border-secondary border-1 opacity-100 my-0"/>
+		<hr class="border border-secondary border-2 opacity-100 my-0"/>
 
 		<div class="d-flex justify-content-center mx-2">
 			<div class="progress my-3 border border-white bg-secondary border-2 rounded-4 w-100" role="progressbar" aria-valuenow="{{computed.taskCompleted}}" aria-valuemin="0" aria-valuemax="{{todo_list.totalTasks}}">
