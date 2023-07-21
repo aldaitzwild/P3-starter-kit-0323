@@ -5,7 +5,7 @@
 	<h1 class="text-center">Your To-Do Lists</h1>
 
 	<div class="container mt-3">
-		<div class="row d-flex justify-content-center g-2 ">
+		<div class="row d-flex justify-content-center g-2 mx-3">
 			<h2 class="ms-3">High Priority Task</h2>
 			<hr class="border border-white border-1 opacity-100"/>
 			{% for todo_list in todoListsHigh %}
@@ -16,13 +16,20 @@
 
 							<hr class="border border-secondary border-1 opacity-100 my-0"/>
 
-							<ul class="my-3 h-50">
+							<ul class="my-3 h-50 list-unstyled">
 								{% if todo_list.tasks is not empty %}
 									{% for task in todo_list.tasks|slice(0,5) %}
-										<li>{{task.content|u.truncate(13, '...', false)}}</li>
+										<li>
+											{% if task.completed %}
+												<i class="bi bi-check-lg bg-success rounded-circle mx-2"></i>
+											{% else %}
+												<i class="bi bi-check-lg bg-secondary rounded-circle mx-2"></i>
+											{% endif %}
+											{{task.content|u.truncate(18, '...', true)}}
+										</li>
 									{% endfor %}
 								{% else %}
-									<li>No task</li>
+									<li class="text-center">No task</li>
 								{% endif %}
 							</ul>
 						</div>
@@ -31,7 +38,7 @@
 			{% endfor %}
 		</div>
 
-		<div class="row d-flex justify-content-center g-2 ">
+		<div class="row d-flex justify-content-center g-2 mx-3">
 			<h2 class="ms-3">Medium Priority Task</h2>
 			<hr class="border border-white border-1 opacity-100"/>
 			{% for todo_list in todoListsMedium %}
@@ -42,13 +49,20 @@
 
 							<hr class="border border-secondary border-1 opacity-100 my-0"/>
 
-							<ul class="my-3 h-50">
+							<ul class="my-3 h-50 list-unstyled">
 								{% if todo_list.tasks is not empty %}
 									{% for task in todo_list.tasks|slice(0,5) %}
-										<li>{{task.content|u.truncate(13, '...', false)}}</li>
+										<li>
+											{% if task.completed %}
+												<i class="bi bi-check-lg bg-success rounded-circle mx-2"></i>
+											{% else %}
+												<i class="bi bi-check-lg bg-secondary rounded-circle mx-2"></i>
+											{% endif %}
+											{{task.content|u.truncate(18, '...', true)}}
+										</li>
 									{% endfor %}
 								{% else %}
-									<li>No task</li>
+									<li class="text-center">No task</li>
 								{% endif %}
 							</ul>
 						</div>
@@ -57,7 +71,7 @@
 			{% endfor %}
 		</div>
 
-		<div class="row d-flex justify-content-center g-2 ">
+		<div class="row d-flex justify-content-center g-2 mx-3">
 			<h2 class="ms-3">Low Priority Task</h2>
 			<hr class="border border-white border-1 opacity-100"/>
 			{% for todo_list in todoListsLow %}
@@ -68,13 +82,20 @@
 
 							<hr class="border border-secondary border-1 opacity-100 my-0"/>
 
-							<ul class="my-3 h-50">
+							<ul class="my-3 h-50 list-unstyled">
 								{% if todo_list.tasks is not empty %}
 									{% for task in todo_list.tasks|slice(0,5) %}
-										<li>{{task.content|u.truncate(13, '...', false)}}</li>
+										<li>
+											{% if task.completed %}
+												<i class="bi bi-check-lg bg-success rounded-circle mx-2"></i>
+											{% else %}
+												<i class="bi bi-check-lg bg-secondary rounded-circle mx-2"></i>
+											{% endif %}
+											{{task.content|u.truncate(18, '...', true)}}
+										</li>
 									{% endfor %}
 								{% else %}
-									<li>No task</li>
+									<li class="text-center">No task</li>
 								{% endif %}
 							</ul>
 						</div>

@@ -15,12 +15,15 @@
 			{{ include('todo_list/_delete_form.html.twig') }}
 		</div>
 	</div>
-	<div class="progress mx-5 my-3 border border-secondary border-2 rounded-4" role="progressbar" aria-valuenow="{{taskCompleted}}" aria-valuemin="0" aria-valuemax="{{todo_list.totalTasks}}">
-		<div class="progress-bar bg-success rounded-4 overflow-visible fs-6 fw-bold" style="width: {{ (taskCompleted / todo_list.totalTasks) * 100 }}%">
-			{{taskCompleted}}
-			/
-			{{todo_list.totalTasks}}</div>
-	</div>
+	{% if todo_list.totalTasks > 0 %}
+		<div class="progress mx-5 my-3 border border-white bg-secondary border-2 rounded-4" role="progressbar" aria-valuenow="{{taskCompleted}}" aria-valuemin="0" aria-valuemax="{{todo_list.totalTasks}}">
+			<div class="progress-bar bg-success rounded-4 overflow-visible fs-6 fw-bold" style="width: {{ (taskCompleted / todo_list.totalTasks) * 100 }}%">
+				{{taskCompleted}}
+				/
+				{{todo_list.totalTasks}}</div>
+
+		</div>
+	{% endif %}
 
 	<hr class="border border-white border-1 opacity-100 mx-4"/>
 	<div class="d-flex mx-4 w-100">
