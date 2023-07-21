@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit TodoList
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex justify-content-center mt-5">
+		<div class="card card-shadow border border-secondary border-4 bg-primary rounded-5 text-white w-50">
+			<h1 class="text-center mt-2 mb-0">Edit To-Do List</h1>
+			<hr class="border border-secondary border-1 opacity-100"/>
+
+			<div class="px-3">
+				{{ include('todo_list/_form.html.twig', {'button_label': 'Update'}) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

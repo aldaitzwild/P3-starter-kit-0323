@@ -1,0 +1,82 @@
+<div{{attributes}}>
+	<div id="sidebar" class="bg-primary h-100">
+		<div class="list-group text-start vh-100">
+			<ul class="list-unstyled text-white text-center my-1">
+				<button type="button" class="btn text-reset d-md-none" data-bs-dismiss="offcanvas" aria-label="Close">
+					<i class="bi bi-x-circle-fill fs-4 text-white"></i>
+				</button>
+
+				<li class="nav-item">
+					<a href="" class="nav-link">
+						<h1 class="text-white mt-2">Task Central</h1>
+					</a>
+				</li>
+				<hr class="border border-white opacity-100">
+
+				<li>
+					<a href="{{ path('todo_list_new')}}" class="btn btn-shadow btn-secondary rounded-4 text-white fs-3 fw-semibold">
+						New To-Do List
+					</a>
+				</li>
+
+				<hr class="border border-white opacity-100">
+
+				<div class="text-md-start">
+					<li class="nav-item ps-3 py-1">
+						<a href="{{ path('app_home')}}" class="nav-link text-white fs-3 fw-semibold">
+							<i class="bi bi-house-fill"></i>
+							Home</a>
+					</li>
+
+					<li class="nav-item ps-3 py-1">
+						<a id="displayTodoHigh" class="nav-link fs-3 fw-semibold text-white">
+							<i class="bi bi-caret-right-fill fs-3"></i>
+							High Priority
+						</a>
+					</li>
+
+					<ul id="todoHighSidebar" class=" ms-4 list-unstyled" style="display: none;">
+						{% for todo_list in computed.todoListsHigh %}
+							<li class="nav-item pt-1">
+								<a href="{{ path('todo_list_show', { id: todo_list.id }) }}" class="nav-link fs-5">-
+									{{ todo_list.title|u.truncate(20, '...', true) }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+
+					<li class="nav-item ps-3 py-1">
+						<a id="displayTodoMedium" class="nav-link fs-3 fw-semibold text-white">
+							<i class="bi bi-caret-right-fill fs-3"></i>
+							Medium Priority
+						</a>
+					</li>
+
+					<ul id="todoMediumSidebar" class=" ms-4 list-unstyled" style="display: none;">
+						{% for todo_list in computed.todoListsMedium %}
+							<li class="nav-item pt-1">
+								<a href="{{ path('todo_list_show', { id: todo_list.id }) }}" class="nav-link fs-5">-
+									{{ todo_list.title|u.truncate(20, '...', true) }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+
+					<li class="nav-item ps-3 py-1">
+						<a id="displayTodoLow" class="nav-link fs-3 fw-semibold text-white">
+							<i class="bi bi-caret-right-fill fs-3"></i>
+							Low Priority
+						</a>
+					</li>
+
+					<ul id="todoLowSidebar" class=" ms-4 list-unstyled" style="display: none;">
+						{% for todo_list in computed.todoListsLow %}
+							<li class="nav-item pt-1">
+								<a href="{{ path('todo_list_show', { id: todo_list.id }) }}" class="nav-link fs-5">-
+									{{ todo_list.title|u.truncate(20, '...', true) }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TodoList
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex justify-content-between mt-3">
+		<div>
+			<h1 class="ms-5 text-white">{{ todo_list.title }}</h1>
+		</div>
+		<div class="d-flex me-5">
+			<a href="{{ path('todo_list_edit', {'id': todo_list.id}) }}" class="btn btn-shadow btn-secondary rounded-4 text-white d-flex align-items-center mx-3">
+				<i class="bi bi-pencil-square fs-3"></i>
+			</a>
+			{{ include('todo_list/_delete_form.html.twig') }}
+		</div>
+	</div>
+	<div class="d-block text-center d-md-flex flex-md-row-reverse justify-content-between mt-2">
+		<div class="progress mx-5 my-3 border border-white bg-secondary border-2 rounded-4 w-75" role="progressbar" aria-valuenow="{{taskCompleted}}" aria-valuemin="0" aria-valuemax="{{todo_list.totalTasks}}">
+			{% if todo_list.totalTasks > 0 %}
+				<div class="progress-bar bg-success rounded-4 overflow-visible fs-6 fw-bold" style="width: {{ (taskCompleted / todo_list.totalTasks) * 100 }}%">
+					{{taskCompleted}}
+					/
+					{{todo_list.totalTasks}}
+				</div>
+			{% else %}
+				<div class="progress-bar bg-success rounded-4 overflow-visible fs-6 fw-bold" style="width: 0%">
+					No task
+				</div>
+			{% endif %}
+		</div>
+		<button id="newTaskBtn" class=" btn btn-shadow btn-secondary text-white fs-3 mx-4 fw-semibold rounded-4">Add Task</button>
+	</div>
+
+	<hr class="border border-white border-1 opacity-100 mx-4"/>
+	<form id="taskForm" name="task" method="post" enctype="multipart/form-data" class="mx-4" style="display: none;">
+		<div class="d-md-flex mx-4">
+			<textarea class="form-control card-shadow" name="content"></textarea>
+			<div class="text-center mt-1">
+				<button type="submit" class="btn btn-shadow btn-secondary text-white fs-3 ms-2 fw-semibold">Submit</button>
+			</div>
+		</div>
+	</form>
+
+	<div class="mt-4 mx-5">
+		{% for task in todo_list.tasks %}
+			<div class="d-flex my-3">
+				<form name="setTaskStatus" method="post" enctype="multipart/form-data" class="mx-4 my-auto">
+					{% if not task.completed %}
+						<input type="number" name="status" value="1" hidden>
+					{% else %}
+						<input type="number" name="status" value="0" hidden>
+					{% endif %}
+					<button type="submit" name="taskStatus" value="{{task.id}}" class="btn btn-task{{task.completed}} btn-shadow text-white rounded-circle">
+						<i class="bi bi-check-lg fs-3"></i>
+					</button>
+				</form>
+
+				<div class="card card-shadow border border-secondary rounded-4 border-4 bg-primary text-white my-2">
+					<div class="d-flex">
+						<p class="mx-3 me-5 my-3 fs-5">{{task.content}}</p>
+						{{ include('task/_delete_form.html.twig') }}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

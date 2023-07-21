@@ -1,2 +1,91 @@
-//start coding by removing this file and adding yours ;)
-@import "wcs";
+$primary: (#0f044c);
+$secondary: (#787a91);
+$info: (#141e61);
+$success: (#00c9a4);
+$white: (#eeeeee);
+
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=News+Cycle&display=swap"); //font-family: 'News Cycle', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Imprima&display=swap");
+
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap-icons/font/bootstrap-icons";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $info;
+    font-family: "Imprima", sans-serif;
+    color: $white;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Oswald", sans-serif;
+    color: $white;
+}
+
+// ---------- index card ----------- //
+
+.progress {
+    height: 35px;
+}
+
+.card-link {
+    transition: all 0.2s ease-in-out;
+}
+
+.card-link:hover {
+    transform: scale(1.1);
+}
+
+// ---------- Shadows ----------- //
+
+.nav-item {
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    background-color: $secondary;
+}
+
+// ---------- Shadows ----------- //
+
+.card-shadow,
+.btn-shadow {
+    box-shadow: 5px 4px 4px 0px black;
+}
+
+.sidebar-shadow {
+    box-shadow: 0px 4px 10px 5px black;
+}
+
+// ---------- btn completed ----------- //
+
+.btn-task1 {
+    transition: all 0.2s ease-in-out;
+    background-color: $success;
+}
+
+.btn-task1:hover {
+    background-color: $secondary;
+    border-color: $secondary;
+    transform: scale(1.1);
+}
+
+.btn-task {
+    transition: all 0.2s ease-in-out;
+    background-color: $secondary;
+}
+
+.btn-task:hover {
+    background-color: $success;
+    border-color: $success;
+    transform: scale(1.1);
+}

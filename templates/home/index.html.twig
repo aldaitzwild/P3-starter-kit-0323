@@ -1,15 +1,38 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Home{% endblock %}
-
+{% block title %}Home
+{% endblock %}
 {% block body %}
-    <div class="pink-stripe">
-        <h1>
-            Let's start coding&nbsp;&#129304;
-        </h1>
-    </div>
-    <div class="white-stripe">
-        <img src="{{ asset('build/images/LOGO_WILD_CODE_SCHOOL.png') }}"
-             alt="">
-    </div>
+	<h1 class="text-center">Your To-Do Lists</h1>
+
+	<div class="container mt-3">
+		<div class="row d-flex justify-content-center g-2 mx-3">
+			<h2 class="ms-3">High Priority Task</h2>
+			<hr class="border border-white border-1 opacity-100"/>
+			{% for todo_list in todoListsHigh %}
+				<div class="col-9 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+					{{ component('TodoCardComponent', { todo_list: todo_list}) }}
+				</div>
+			{% endfor %}
+		</div>
+
+		<div class="row d-flex justify-content-center g-2 mx-3">
+			<h2 class="ms-3">Medium Priority Task</h2>
+			<hr class="border border-white border-1 opacity-100"/>
+			{% for todo_list in todoListsMedium %}
+				<div class="col-9 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+					{{ component('TodoCardComponent', { todo_list: todo_list})}}
+				</div>
+			{% endfor %}
+		</div>
+
+		<div class="row d-flex justify-content-center g-2 mx-3">
+			<h2 class="ms-3">Low Priority Task</h2>
+			<hr class="border border-white border-1 opacity-100"/>
+			{% for todo_list in todoListsLow %}
+				<div class="col-9 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+					{{ component('TodoCardComponent', { todo_list: todo_list}) }}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}
