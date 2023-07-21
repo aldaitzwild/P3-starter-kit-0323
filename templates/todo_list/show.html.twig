@@ -15,26 +15,28 @@
 			{{ include('todo_list/_delete_form.html.twig') }}
 		</div>
 	</div>
-	{% if todo_list.totalTasks > 0 %}
-		<div class="progress mx-5 my-3 border border-white bg-secondary border-2 rounded-4" role="progressbar" aria-valuenow="{{taskCompleted}}" aria-valuemin="0" aria-valuemax="{{todo_list.totalTasks}}">
-			<div class="progress-bar bg-success rounded-4 overflow-visible fs-6 fw-bold" style="width: {{ (taskCompleted / todo_list.totalTasks) * 100 }}%">
-				{{taskCompleted}}
-				/
-				{{todo_list.totalTasks}}</div>
+	<div class="d-flex justify-content-between mt-2">
+		<button id="newTaskBtn" class="btn btn-shadow btn-secondary text-white fs-3 ms-5 me-2 fw-semibold rounded-4">Add Task</button>
+		{% if todo_list.totalTasks > 0 %}
+			<div class="progress mx-5 my-3 border border-white bg-secondary border-2 rounded-4 w-75" role="progressbar" aria-valuenow="{{taskCompleted}}" aria-valuemin="0" aria-valuemax="{{todo_list.totalTasks}}">
+				<div class="progress-bar bg-success rounded-4 overflow-visible fs-6 fw-bold" style="width: {{ (taskCompleted / todo_list.totalTasks) * 100 }}%">
+					{{taskCompleted}}
+					/
+					{{todo_list.totalTasks}}</div>
 
-		</div>
-	{% endif %}
+			</div>
+		{% endif %}
+	</div>
 
 	<hr class="border border-white border-1 opacity-100 mx-4"/>
-	<div class="d-flex mx-4 w-100">
-		<button id="newTaskBtn" class="btn btn-shadow btn-secondary text-white fs-3 ms-5 me-2 fw-semibold rounded-4">Add Task</button>
-		<form id="taskForm" name="task" method="post" enctype="multipart/form-data" class="w-75" style="display: none;">
-			<div class="d-block text-center d-md-flex">
-				<textarea class="form-control card-shadow" name="content"></textarea>
+	<form id="taskForm" name="task" method="post" enctype="multipart/form-data" class="mx-4" style="display: none;">
+		<div class="d-md-flex mx-4">
+			<textarea class="form-control card-shadow" name="content"></textarea>
+			<div class="text-center mt-1">
 				<button type="submit" class="btn btn-shadow btn-secondary text-white fs-3 ms-2 fw-semibold">Submit</button>
 			</div>
-		</form>
-	</div>
+		</div>
+	</form>
 
 	<div class="mt-4 mx-5">
 		{% for task in todo_list.tasks %}

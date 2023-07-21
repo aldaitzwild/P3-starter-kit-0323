@@ -85,6 +85,6 @@ newTaskBtn.addEventListener("click", function () {
     newTaskBtn.innerHTML = '<i class="bi bi-eye-slash fs-3"></i>';
   } else {
     taskForm.style.display = "none";
-    newTaskBtn.innerHTML = "New Task";
+    newTaskBtn.innerHTML = "Add Task";
   }
 });
