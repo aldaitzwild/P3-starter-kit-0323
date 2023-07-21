@@ -50,9 +50,9 @@ class TodoListController extends AbstractController
             $this->addFlash('success', "New task added");
         }
 
-        $taskId = $request->get('taskStatus');
         $status = $request->get('status');
-        if (!empty($taskId) && $status === false || true) {
+        $taskId = $request->get('taskStatus');
+        if (isset($status) && isset($taskId)) {
             $task = $taskRepository->find($taskId);
             $task->setCompleted($status);
 
